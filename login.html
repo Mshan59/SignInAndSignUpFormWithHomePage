@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/029367c707.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/login.css">
+    <title>Login Page</title>
+    <style>
+         .toggle-password i {
+        transition: color 0.3s ease-in-out;
+      }
+      .error {
+        color: red;
+        font-size: 12px;
+        margin-top: 4px;
+      }
+    </style>
+</head>
+<body>
+    <section class="container-fluid">
+        <div class="container logo">
+         <div class="square my-4">
+            <span class="eclipse"></span>
+            <span class="rectangle"></span>
+         </div>
+         <div class="wel-text my-4">
+         <p >Welcome Let's Get Started!</p>
+        </div>
+        </div>
+
+        <div class="card">
+            <div class="form-box my-4">
+                <div class="form">
+                <form action="#" id="loginForm" method="GET">
+                  <label class="my-2" for="user id">User ID</label>
+                  <div class="input-field">
+                    <i class="fa fa-user" ></i>
+                    <input type="text" placeholder="User ID"  id="userId">
+                    <div class="error" id="userIdError"></div>
+                  </div>
+                  <label class="my-2" for="user id">Your Password</label>
+                  <div class="input-field">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" placeholder="Your Password"  id="passwordInput">
+                    <div class="error" id="passwordError"></div>
+                    <span class="toggle-password" onclick="togglePasswordVisibility()">
+                      <i class="fas fa-eye"></i>
+                    </span>
+                  </div>
+                  <button type="button" class="btn btn-primary my-4" onclick="validateForm()">LOGIN</button>
+                </form>
+                <div class="forget">
+                <center>  <p style="text-decoration: underline;">You Forget Password ?</p>
+                  <p>No Account yet? <a href="#">Create Account</a></p></center>
+                </div>
+              </div>
+              </div>
+        </div>
+    </section>
+    <script>
+    //   function togglePasswordVisibility() {
+    //   const passwordInput = document.getElementById('passwordInput');
+    //   const togglePassword = document.querySelector('.toggle-password');
+
+    //   if (passwordInput.type === 'password') {
+    //     passwordInput.type = 'text';
+    //     togglePassword.classList.add('password-show');
+    //   } else {
+    //     passwordInput.type = 'password';
+    //     togglePassword.classList.remove('password-show');
+    //   }
+    // }
+
+
+
+
+    function togglePasswordVisibility() {
+    const passwordInput = document.getElementById('passwordInput');
+    const togglePassword = document.querySelector('.toggle-password');
+
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+      togglePassword.querySelector('i').classList.remove('fa-eye');
+      togglePassword.querySelector('i').classList.add('fa-eye-slash');
+      togglePassword.style.color = '#000';
+      togglePassword.style.marginRight = '12px ';
+    } else {
+      passwordInput.type = 'password';
+      togglePassword.querySelector('i').classList.remove('fa-eye-slash');
+      togglePassword.querySelector('i').classList.add('fa-eye');
+      togglePassword.style.color = '';
+    }
+  }
+
+
+  function validateForm() {
+        const userId = document.getElementById('userId').value;
+        const password = document.getElementById('passwordInput').value;
+        let valid = true;
+        
+        // Reset error messages
+        document.getElementById('userIdError').textContent = '';
+        document.getElementById('passwordError').textContent = '';
+        
+        // Validate User ID
+        if (userId.trim() === '') {
+          document.getElementById('userIdError').textContent = 'User ID is required';
+          valid = false;
+        }
+        
+        // Validate Password
+        if (password.trim() === '') {
+          document.getElementById('passwordError').textContent = 'Password is required';
+          valid = false;
+        }
+        
+        if (valid) {
+          // Perform further actions, such as submitting the form
+          $('#loginForm').submit();
+        }
+      }
+</script>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+</body>
+</html>
